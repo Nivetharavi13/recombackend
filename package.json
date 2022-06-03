@@ -1,0 +1,19 @@
+{
+  "name": "recom",
+  "version": "1.0.0",
+  "description": " an ecom app ",
+  "main": "index.js",
+  "scripts": {
+    
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nivetharavi13/recombackend.git"
+  },
+  "author": "Nivetha S R",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Nivetharavi13/recombackend/issues"
+  },
+  "homepage": "https://github.com/Nivetharavi13/recombackend#readme"
+}
