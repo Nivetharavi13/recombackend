@@ -4,7 +4,7 @@ import userRoutes from "./routes/user";
 
 const app = express();
 
-const PORT = 8079;
+const PORT = 8067;
 
 //const DB_URI = 'HGFHGDFHADGA'
 

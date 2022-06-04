@@ -4,6 +4,8 @@ import User from "../services/mongodb/models/User"
 import { validationResult, body } from "express-validator";
 
 import { signJWT, verifyJWT  } from '../utils/index'
+import { isAuthenticated } from "../services/middlewares/isAuthenticated";
+import { isAdmin } from "../services/middlewares/isAdmin";
 
 
 const router = express.Router();
@@ -166,6 +168,8 @@ description: Route to get all users
 
 router.get(
   "/all",
+  isAuthenticated,
+  isAdmin,
   // !TODO make sure that only the admin can access this route
   async (req, res) => {
     try {
@@ -195,6 +199,7 @@ router.get(
 
 router.get(
   "/profile/me",
+  isAuthenticated,
   // !TODO make sure that only the admin can access this route
   async (req, res) => {
     try {
