@@ -1,14 +1,17 @@
-import express from 'express'
-import { connectDB } from './services/mongodb/connectDB'
-const app = express()
+import express from "express";
+import { connectDB } from "./services/mongodb/connectDB";
+import userRoutes from "./routes/user";
 
-const PORT = 8086
+const app = express();
+
+const PORT = 8079;
+
 //const DB_URI = 'HGFHGDFHADGA'
 
+connectDB();
+app.use(express.json());
+app.use("/user", userRoutes);
 
-connectDB()
-
-
-app.listen(PORT,()=> {
-    console.log(`server listening to posrt ${PORT}`)
-})
+app.listen(PORT, () => {
+  console.log(`server listening to port ${PORT}`);
+});

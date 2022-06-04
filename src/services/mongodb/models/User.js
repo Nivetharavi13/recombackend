@@ -1,31 +1,44 @@
-import mongoose from 'mongoose'
+var mongoose = require('mongoose');
+    var Userschema = mongoose.Schema({
+        firstName: {
+            type: String,
+            required: true,
+            minlength: 1,
+          },
+          lastName: {
+            type: String,
+            required: true,
+            minlength: 1,
+          },
+          email: {
+          type: String,
+            required: true,
+            unique: true,
+          },
+          password: {
+            type: String,
+            required: true,
+          },
+          role: {
+            type: Number,
+            default: 0,
+            // ! 0 is the non privileged user & 1 is the admin user
+          },
+          addresses: [
+            {
+              type: mongoose.Types.ObjectId,
+              ref: "Address",
+            },
+          ],
+          orders: [
+            {
+              type: mongoose.Types.ObjectId,
+              ref: "Order",
+            },
+          ],
+        },
+        {
+          timestamps: true,
+        })
 
-const UserSchema = new mongoose.Schema({
-    email: {
-        type: String,
-        required: true,
-        unique: true
-    },
-    firstName: {
-        type: String,
-        required: true,
-        minlength: 1,
-    },
-    lastName: {
-        type: String,
-        default: '',
-        minlength: 1,
-    },
-    password: {
-        type: String,
-        required: true
-    },
-    role: {
-        type: Number,
-        default: 0
-    }
-})
-
-const User = mongoose.model("User", UserSchema)
-
-export default User
+        module.exports = mongoose.model('User', Userschema); 
