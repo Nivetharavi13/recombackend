@@ -23,7 +23,10 @@ export const verifyJWT = (token)=> {
       );  
       return data
   } catch (error) {
-    return null
+    return null;
   }
 
 }
+
+//verified jwt returns a payload
+

@@ -3,11 +3,11 @@ import bcrypt from "bcryptjs";
 import User from "../services/mongodb/models/User"
 import { validationResult, body } from "express-validator";
 
-import { signJWT  } from '../utils/index'
-import jwt from "jsonwebtoken";
+import { signJWT, verifyJWT  } from '../utils/index'
+
 
 const router = express.Router();
-const JWT_SECRET = "Something";
+
 /*
 type: POST
 body: firstName, lastName, email, password 
@@ -199,18 +199,18 @@ router.get(
   async (req, res) => {
     try {
       const token = req.headers["authorization"].split(' ')[1];
-      const data = jwt.verify(token, JWT_SECRET)
-      console.log(data)
+      const { id } = verifyJWT(token)
+   //   console.log(data)
+     //we got the id from token 
+     // console.log(token)
      
-      console.log(token)
-     
-     
+      const user = await User.findOne({_id:id})
      
    
 
       return res.json({
         data: {
-          user: null
+          user,
         },
         success: true,
         message: "User profile fetched successfully",
