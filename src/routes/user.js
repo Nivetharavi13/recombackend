@@ -7,7 +7,7 @@ import { signJWT  } from '../utils/index'
 import jwt from "jsonwebtoken";
 
 const router = express.Router();
-
+const JWT_SECRET = "Something";
 /*
 type: POST
 body: firstName, lastName, email, password 
@@ -199,11 +199,14 @@ router.get(
   async (req, res) => {
     try {
       const token = req.headers["authorization"].split(' ')[1];
+      const data = jwt.verify(token, JWT_SECRET)
+      console.log(data)
+     
       console.log(token)
      
      
      
-    //  const users = await User.find({ }).select("firstName lastName email orders addresses");
+   
 
       return res.json({
         data: {
