@@ -2,8 +2,8 @@ import express from 'express'
 import { connectDB } from './services/mongodb/connectDB'
 const app = express()
 
-const PORT = 8089
-const DB_URI = 'HGFHGDFHADGA'
+const PORT = 8086
+//const DB_URI = 'HGFHGDFHADGA'
 
 
 connectDB()
