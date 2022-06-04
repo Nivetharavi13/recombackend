@@ -1,15 +1,13 @@
 import express from 'express'
-
+import { connectDB } from './services/mongodb/connectDB'
 const app = express()
 
-const PORT = 8080
+const PORT = 8089
 const DB_URI = 'HGFHGDFHADGA'
 
 
+connectDB()
 
-console.log(PORT)
-
-console.log(DB_URI)
 
 app.listen(PORT,()=> {
     console.log(`server listening to posrt ${PORT}`)
