@@ -1,6 +1,6 @@
 import express from "express";
 import bcrypt from "bcryptjs";
-import User from "../services/mongodb/models/User";
+import {User } from "../services/mongodb/models/User";
 import { validationResult, body } from "express-validator";
 
 import { signJWT, verifyJWT } from "../utils/index";
@@ -204,9 +204,9 @@ router.get(
       const { id } = verifyJWT(token);
       //   console.log(data)
       //we got the id from token
-      // console.log(token)
+      //console.log(User)
 
-      const user = await User.findOne({ _id: id });
+      const user = await User.findOne({ _id: id }).populate('addresses');
 
       return res.json({
         data: {

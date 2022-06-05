@@ -99,6 +99,78 @@ router.get(
 
 
 
+/*
+type: DELETE
+body: none
+path: /category/all
+Route to delete the product
+*/
+
+router.delete(
+    "/:id",
+    isAuthenticated,
+    isAdmin,
+    async (req, res) => {
+      try {
+        const category = await Category.findOneAndDelete({_id:id});
+  
+        return res.json({
+          data: {
+            category,
+            success: true,
+          },
+          message: "Category deleted",
+        });
+      } catch (error) {
+        console.log(error);
+        return res.json({
+          data: {
+            category: [],
+            success: false,
+          },
+          message: error.message,
+        });
+      }
+    }
+  );
+  
+
+// /*
+// type: UPDATE
+// body: none
+// path: /category/update
+// Route to delete the product
+// */
+
+  
+router.put(
+    "/:id",
+    isAuthenticated,
+    isAdmin,
+    async (req, res) => {
+      try {
+        const category = await Category.findOneAndUpdate({_id:id});
+  
+        return res.json({
+          data: {
+            category,
+            success: true,
+          },
+          message: "Category updated",
+        });
+      } catch (error) {
+        console.log(error);
+        return res.json({
+          data: {
+            category: [],
+            success: false,
+          },
+          message: error.message,
+        });
+      }
+    }
+  );
+
 
 
 export default router
