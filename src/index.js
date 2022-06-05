@@ -13,7 +13,7 @@ app.use(express.json());
 app.use("/user", userRoutes);
 
 app.get('/',(res, req)=> {
-  res.setEncoding(`Server deployed to PORT : ${PORT}`)
+  res.send(`Server deployed to PORT : ${PORT}`)
 })
 
 
