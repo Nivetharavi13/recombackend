@@ -12,7 +12,7 @@ connectDB();
 app.use(express.json());
 app.use("/user", userRoutes);
 
-app.get('/',(res, req)=> {
+app.get('/',(req, res)=> {
   res.send(`Server deployed to PORT : ${PORT}`)
 })
 
