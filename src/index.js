@@ -1,7 +1,7 @@
 import express from "express";
 import { connectDB } from "./services/mongodb/connectDB";
 import userRoutes from "./routes/user";
-
+import categoryRoutes from './routes/category'
 const app = express();
 
 const PORT = 8067;
@@ -11,6 +11,8 @@ const PORT = 8067;
 connectDB();
 app.use(express.json());
 app.use("/user", userRoutes);
+app.use("/category", categoryRoutes);
+
 
 app.get('/',(req, res)=> {
   res.send(`Server deployed to PORT : ${PORT}`)
