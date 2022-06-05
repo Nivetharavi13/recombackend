@@ -12,6 +12,12 @@ connectDB();
 app.use(express.json());
 app.use("/user", userRoutes);
 
+app.get('/',(res, req)=> {
+  res.setEncoding(`Server deployed to PORT : ${PORT}`)
+})
+
+
+
 app.listen(PORT, () => {
   console.log(`server listening to port ${PORT}`);
 });
