@@ -105,7 +105,8 @@ body: none
 path: /category/all
 Route to delete the product
 */
-
+//the problem occurs as products has categories in to it ........
+//change the code 
 router.delete(
     "/:id",
     isAuthenticated,
@@ -149,6 +150,7 @@ router.put(
     isAdmin,
     async (req, res) => {
       try {
+        const {id} = req.params
         const category = await Category.findOneAndUpdate({_id:id});
   
         return res.json({
